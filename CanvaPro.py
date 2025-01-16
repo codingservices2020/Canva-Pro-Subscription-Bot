@@ -9,10 +9,10 @@ import os
 from apscheduler.schedulers.background import BackgroundScheduler
 import asyncio
 
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
-#keep_alive()
+keep_alive()
 
 TOKEN = os.getenv('TOKEN')
 PRIVATE_CHANNEL_ID = int(os.getenv('PRIVATE_CHANNEL_ID'))
