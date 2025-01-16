@@ -4,3 +4,6 @@ requests
 apscheduler
 python-dotenv
 python-telegram-bot[job-queue]
+pip>=24.3.1
+setuptools>=68.0.0
+wheel
