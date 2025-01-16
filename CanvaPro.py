@@ -19,7 +19,7 @@ keep_alive()
 
 TOKEN = os.getenv('TOKEN')
 PRIVATE_CHANNEL_ID = int(os.getenv('PRIVATE_CHANNEL_ID'))
-MSG_DELETE_TIME = int(os.getenv('MSG_DELETE_TIME',0))  # Default to 0 if not set
+MSG_DELETE_TIME = int(os.getenv('MSG_DELETE_TIME'))  # Default to 0 if not set
 # The number of members needed to trigger the reward
 payment_url = os.getenv('payment_url')
 canva_url = os.getenv('canva_url')
