@@ -142,7 +142,7 @@ def create_paypal_payment(amount):
         "purchase_units": [{"amount": {"currency_code": "USD", "value": f"{amount:.2f}"}}],
         "application_context": {
             "return_url": "https://codingservices2020.github.io/Checkout-Page/",
-            "cancel_url": "https://t.me/Testing233535Bot"
+            "cancel_url": "https://t.me/CanvaPro3_bot"
         }
     }
     response = requests.post(url, headers=headers, json=data)
