@@ -272,9 +272,9 @@ async def handle_plan_selection(update: Update, context: ContextTypes.DEFAULT_TY
     chat_id = query.message.chat.id
     choice = query.data
     if user_data[chat_id]["region"] == "Non-India":
-        amount = 2.00 if choice == "monthly" else 6.00
+        amount = 2 if choice == "monthly" else 6
     else:
-        amount = 69.00 if choice == "monthly" else 299.00
+        amount = 69 if choice == "monthly" else 299
     user_data[chat_id]["amount"] = amount
     user_data[chat_id]["plan"] = "Monthly" if choice == "monthly" else "Annual"
 
@@ -289,14 +289,15 @@ async def handle_plan_selection(update: Update, context: ContextTypes.DEFAULT_TY
         order_id, approve_url = create_paypal_payment(amount)
         user_data[chat_id]["order_id"] = order_id
     URL = approve_url if user_data[chat_id]["region"] == "Non-India" else PAYMENT_URL
+    button_text = f"🚀Pay ${amount} now🚀" if user_data[chat_id]["region"] == "Non-India" else f"🚀Pay Rs {amount}/- now🚀"
     keyboard = [
         # [InlineKeyboardButton("Pay Now", web_app=WebAppInfo(url=URL))],
-        [InlineKeyboardButton("Pay Now", url=URL)],
-        [InlineKeyboardButton("Verify Payment", callback_data="verify_payment")]
+        [InlineKeyboardButton(button_text, url=URL)],
+        [InlineKeyboardButton("✅ Verify Payment", callback_data="verify_payment")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await context.bot.send_message(chat_id, f"*🔰STEPS🔰*\n\n"
-                                            f"1️⃣ First click on <b>Pay Now</b> button, to make the payment.\n"
+                                            f"1️⃣ First click on *Pay Now* button, to make the payment.\n"
                                             f"2️⃣ After making payment, you have to click on *Verify Payment* "
                                             f"button to verfity your payment and wait for few seconds. \n\n"
                                             f"*Your User ID*: `{chat_id}`\n",
